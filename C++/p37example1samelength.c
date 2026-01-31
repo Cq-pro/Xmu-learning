@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+void hex_out(char a)
+{
+    const char HEX[]="0123456789ABCDEF";
+    printf("%c%c",HEX[(a&0xF0)>>4],HEX[a&0x0F]);
+}
+void out_1byte(char *addr)
+{
+    hex_out(*(addr +0));
+}
+
+
+
+int main ()
+{
+    unsigned char uc1=255, uc;
+    char c1=156,c;
+    c=(char)uc1;
+
+    out_1byte(&uc1);
+    printf(" = ucl = %u \n", uc1) ;
+    out_1byte(&c);
+    printf(" = c = %d \n", c) ;
+
+    uc=c1;
+    out_1byte (&c1) ; printf (" = c1 = %d \n", c1) ;
+    out_1byte (&uc) ;printf (" = uc = %u \n", uc) ;
+
+
+
+
+
+}
